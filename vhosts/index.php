@@ -2,7 +2,7 @@
 
 define("SERV", 'localhost');
 define("USER", 'vhosts');
-define("PASS", 'your_pass');
+define("PASS", 'youpass');
 define("DBNAME", 'vhosts');
 define('VHOSTS_PATH', 'C:/xampp/apache/conf/extra/httpd-vhosts.conf');
 
@@ -49,20 +49,20 @@ return $list;
 }
 
 function actions_helper($domain){
-	$delete = "<a href='/vhosts/index.php?action=delete&domain=$domain'>Delete</a>";
-	$edit = "<a href='/vhosts/index.php?action=edit&domain=$domain'>Edit</a>";
+	$delete = "<i class='fas fa-trash'></i><a href='/vhosts/index.php?action=delete&domain=$domain'>Delete</a>";
+	$edit = "<i class='far fa-edit'></i><a href='/vhosts/index.php?action=edit&domain=$domain'>Edit</a>";
 	return "<td>$delete</td><td>$edit</td>";
 }
 
 function print_list($list){
-	$html = "<table width='100%' border='1'>";
+	$html = "";
 	for($i=0;$i<count($list);$i++){
 		$domain = $list[$i]['domain'];
 		$path = $list[$i]['path'];
 		$actions = actions_helper($domain);
 		$html .= "<tr><td>$domain</td><td>$path</td>$actions</tr>";
 	};
-	return $html . '</table>';
+	return $html;
 }
 
 function read_template(){
